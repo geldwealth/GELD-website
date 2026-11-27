@@ -65,7 +65,7 @@ interface SocialMediaProps {
   latest?: LatestSocial;
 }
 
-const AUTOPLAY_MS = 6000;
+const AUTOPLAY_MS = 8000;
 const DRAG_THRESHOLD = 6;
 
 const baseSocialMediaPosts: SocialMediaPost[] = [
@@ -266,15 +266,17 @@ export default function SocialMedia({
     [n]
   );
 
+  // Start on the first card (Instagram) and only autoplay once the section is on screen.
   useEffect(() => {
-    if (!AUTOPLAY_MS) return;
+    if (!AUTOPLAY_MS || !isVisible) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
+    setActiveIndex(0);
     const id = window.setInterval(() => {
       if (!pausedRef.current) go(1);
     }, AUTOPLAY_MS);
     return () => window.clearInterval(id);
-  }, [go]);
+  }, [go, isVisible]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") go(-1);
@@ -315,14 +317,13 @@ export default function SocialMedia({
   };
 
   const cardStyle = (cardIndex: number): React.CSSProperties => {
-    // 90deg offsets for 4 items in a circle
-    const theta_rad = ((cardIndex - activeIndex) * 90 * Math.PI) / 180;
-
     const currentMod = ((activeIndex % n) + n) % n;
     let diff = (cardIndex - currentMod) % n;
     if (diff > n / 2) diff -= n;
     if (diff < -n / 2) diff += n;
     const absDiff = Math.abs(diff);
+    // Position from the wrapped offset so any number of cards stays in order.
+    const theta_rad = (diff * 70 * Math.PI) / 180;
 
     let zIndex = 5;
     const activeMod = ((activeIndex % n) + n) % n;
