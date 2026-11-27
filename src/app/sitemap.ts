@@ -26,6 +26,8 @@ const staticRoutes: {
     changeFrequency: "weekly",
     priority: 0.85,
   },
+  { path: "/products/loans", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/products/insurance", changeFrequency: "monthly", priority: 0.8 },
   { path: "/performance", changeFrequency: "weekly", priority: 0.8 },
   { path: "/fund-managers", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blog", changeFrequency: "daily", priority: 0.8 },

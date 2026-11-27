@@ -185,6 +185,8 @@ export default function Header() {
             <Link href="/products/pms" className={styles.navDropdownItem}>PMS (Portfolio Management Services)</Link>
             <Link href="/products/aif" className={styles.navDropdownItem}>AIF (Alternative Investment Fund)</Link>
             <Link href="/products/mutual-funds" className={styles.navDropdownItem}>Mutual Funds</Link>
+            <Link href="/products/loans" className={styles.navDropdownItem}>Loans (Personal &amp; Professional)</Link>
+            <Link href="/products/insurance" className={styles.navDropdownItem}>Insurance (Life &amp; Health)</Link>
           </div>
         </div>
         <Link
@@ -295,6 +297,8 @@ export default function Header() {
               <Link href="/products/pms" className={styles.mobileSublink} onClick={() => setIsMobileMenuOpen(false)}>PMS</Link>
               <Link href="/products/aif" className={styles.mobileSublink} onClick={() => setIsMobileMenuOpen(false)}>AIF</Link>
               <Link href="/products/mutual-funds" className={styles.mobileSublink} onClick={() => setIsMobileMenuOpen(false)}>Mutual Funds</Link>
+              <Link href="/products/loans" className={styles.mobileSublink} onClick={() => setIsMobileMenuOpen(false)}>Loans</Link>
+              <Link href="/products/insurance" className={styles.mobileSublink} onClick={() => setIsMobileMenuOpen(false)}>Insurance</Link>
             </div>
           </div>
           <Link

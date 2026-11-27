@@ -25,7 +25,7 @@ interface ProductsProps {
   [key: string]: any;
 }
 
-const PRODUCT_TYPES = [MINI_STOCK_PORTFOLIOS_NAME, "PMS", "AIF", "Mutual Funds"] as const;
+const PRODUCT_TYPES = [MINI_STOCK_PORTFOLIOS_NAME, "PMS", "AIF", "Mutual Funds", "Loans", "Insurance"] as const;
 type ProductType = (typeof PRODUCT_TYPES)[number];
 
 export default function Products({ mode = "all", defaultProduct, ref, onScrollDown }: ProductsProps) {
@@ -102,6 +102,8 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
         PMS: "pms",
         AIF: "aif",
         "Mutual Funds": "mutual-funds",
+        Loans: "loans",
+        Insurance: "insurance",
       };
       router.push(`/products/${slugMap[prod]}`);
     } else {
@@ -144,8 +146,8 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
       anchorId: "pms-section"
     },
     AIF: {
-      title: "Invest Before the IPO",
-      subtitle: "AIF: Alternative Investment Funds for Experienced Investors",
+      title: "Private Equity: Exclusive Pre-IPO Entry",
+      subtitle: "AIF: Private equity not available in the grey market",
       paragraph:"Many of India's biggest wealth stories began before the IPO, with private equity investors. Our AIF partners invest in high quality companies before they go public, giving you access to the same growth opportunity. No IPO allotment uncertainty. Just long term value creation until the IPO exit. This opportunity is designed for sophisticated investors. Minimum investment: ₹1 crore as per SEBI guidelines. AIF investments are subject to market and liquidity risks. Please read all offer documents carefully before investing.",
       // paragraph: "Access high-yield alternative opportunities including pre-IPO equity, structured debt, and commercial real estate starting at ₹1 Crore. Tailored for ultra-high-net-worth portfolios seeking non-correlated alpha.",
       badge: "Alternative Investment Fund",
@@ -161,7 +163,25 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
       badge: "Mutual Funds",
       primaryCta: "Start a SIP Today",
       anchorId: "mutual-funds-section"
-    }
+    },
+    Loans: {
+      title: "The Right Loan, Without the Runaround",
+      subtitle: "Loans: Personal and Professional Loans",
+      paragraph:
+        "Whether it is a personal need or your business or practice growing, we help you find a loan that fits your cash flow. We compare options across lenders, explain the full cost including fees, and handle the paperwork with you.",
+      badge: "Personal & Professional Loans",
+      primaryCta: "Find My Loan",
+      anchorId: "loans-section",
+    },
+    Insurance: {
+      title: "Protect First, Then Grow",
+      subtitle: "Insurance: Life and Health Cover",
+      paragraph:
+        "One big hospital bill or an unexpected loss can undo years of investing. We work out how much life and health cover your family actually needs, based on your income, loans and goals, and help you compare plans across insurers.",
+      badge: "Life & Health Insurance",
+      primaryCta: "Check My Cover",
+      anchorId: "insurance-section",
+    },
   };
 
   return (
@@ -176,7 +196,7 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
             </div>
             <p className={styles.aboutText}>
               <span className={styles.serifItalic}>Steady advice. Every market.</span>{" "}
-              <span className={styles.fadeText}>Mutual funds, professionally managed stock portfolios and alternative funds,</span>{" "}
+              <span className={styles.fadeText}>Public and private equity, mutual funds, loans and insurance,</span>{" "}
               <span className={styles.highlightText}>chosen for your goals, not for a sales target.</span>{" "}
               <span className={styles.fadeText}>One clear plan for your whole portfolio, from a Lower Parel team you can actually meet.</span>
             </p>
@@ -332,11 +352,11 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
                   </div>
                   <div className={styles.assetBlock}>
                     <span className={styles.blockVal}>Pre-IPO</span>
-                    <span className={styles.blockLbl}>Unlisted Equity</span>
+                    <span className={styles.blockLbl}>Exclusive Entry</span>
                   </div>
                   <div className={styles.assetBlock}>
-                    <span className={styles.blockVal}>Debt</span>
-                    <span className={styles.blockLbl}>Structured Yield</span>
+                    <span className={styles.blockVal}>Private</span>
+                    <span className={styles.blockLbl}>Not on the Grey Market</span>
                   </div>
                 </div>
               )}
@@ -352,6 +372,40 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
                   </div>
                   <div className={`${styles.growthBar} ${styles.goldBar}`} style={{ height: "90%", animationDelay: "0.3s" }}>
                     <span className={styles.growthBarLabel}>Compound</span>
+                  </div>
+                </div>
+              )}
+
+              {activeProduct === "Loans" && (
+                <div className={styles.aifAssetGrid}>
+                  <div className={`${styles.assetBlock} ${styles.goldGlow}`}>
+                    <span className={styles.blockVal}>Personal</span>
+                    <span className={styles.blockLbl}>For life&apos;s big needs</span>
+                  </div>
+                  <div className={styles.assetBlock}>
+                    <span className={styles.blockVal}>Professional</span>
+                    <span className={styles.blockLbl}>Doctors, CAs, business owners</span>
+                  </div>
+                  <div className={styles.assetBlock}>
+                    <span className={styles.blockVal}>Business</span>
+                    <span className={styles.blockLbl}>Working capital &amp; machinery</span>
+                  </div>
+                </div>
+              )}
+
+              {activeProduct === "Insurance" && (
+                <div className={styles.aifAssetGrid}>
+                  <div className={`${styles.assetBlock} ${styles.goldGlow}`}>
+                    <span className={styles.blockVal}>Life</span>
+                    <span className={styles.blockLbl}>Cover for your family</span>
+                  </div>
+                  <div className={styles.assetBlock}>
+                    <span className={styles.blockVal}>Health</span>
+                    <span className={styles.blockLbl}>Hospital bills covered</span>
+                  </div>
+                  <div className={styles.assetBlock}>
+                    <span className={styles.blockVal}>Review</span>
+                    <span className={styles.blockLbl}>Right cover for your goals</span>
                   </div>
                 </div>
               )}

@@ -56,12 +56,12 @@ export const catalogProducts: CatalogProduct[] = [
     name: "AIF",
     slug: "aif",
     iconType: "coin",
-    badge: "Unlisted Equities, REITS",
+    badge: "Private Equity, Pre-IPO",
     value: "₹1 Crore",
     featured: true,
     bullets: [
-      "Investments in upto 20 unlisted companies or Real estate projects",
-      "Highest compounders across categories",
+      "Exclusive pre-IPO entry into up to 20 unlisted companies or real estate projects",
+      "Private equity not available in the grey market",
     ],
   },
   {
@@ -84,7 +84,17 @@ export const catalogProducts: CatalogProduct[] = [
     ],
   },
   {
+    name: "Personal & Professional Loans",
+    slug: "loans",
+    iconType: "coin",
+    bullets: [
+      "Personal, professional and business loans, compared across lenders.",
+      "We explain the full cost, including fees, and handle the paperwork with you.",
+    ],
+  },
+  {
     name: "Life & Health Insurance",
+    slug: "insurance",
     iconType: "coin",
     bullets: [
       "Insurance is the first step in Personal finance , One big Hospital bill can bite big into our portfolios.",

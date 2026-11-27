@@ -120,6 +120,17 @@ export const CONTACT_INTENTS: Record<string, ContactIntentConfig> = {
     thankYouMessage:
       "Our team will explain how the strategy works and whether it fits your portfolio.",
   },
+  loans: {
+    id: "loans",
+    emailSubject: "Loan Inquiry from {name}",
+    formBadge: "Personal & Professional Loans",
+    formTitle: "Find the right loan",
+    formSubheading: "Personal, professional and business loans, compared for you.",
+    messagePlaceholder: "Tell us the loan type, amount and timeline you have in mind...",
+    thankYouTitle: "Thank you for your loan enquiry!",
+    thankYouMessage:
+      "Our team will compare options for you and get back with the next steps.",
+  },
   insurance: {
     id: "insurance",
     emailSubject: "Insurance Inquiry from {name}",
@@ -224,6 +235,7 @@ export const CATALOG_CONTACT_INTENT: Record<string, string> = {
   "Fixed Income Offerings": "fixed-income",
   "XAlgo Trading Software": "algo-trading",
   "Life & Health Insurance": "insurance",
+  "Personal & Professional Loans": "loans",
   "Shariyat-Compliant Investment Options": "shariah",
 };
 
@@ -232,6 +244,8 @@ export const PRODUCT_TYPE_INTENT: Record<string, string> = {
   PMS: "pms",
   AIF: "aif",
   "Mutual Funds": "mutual-funds-sip",
+  Loans: "loans",
+  Insurance: "insurance",
 };
 
 export const PRODUCT_REVIEW_INTENT: Record<string, string> = {
