@@ -1,6 +1,7 @@
 "use client";
 
 import type { WebinarDetails } from "../../lib/webinarPoster";
+import type { LatestSocial } from "../../lib/socialPosts";
 
 import React, { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
@@ -22,8 +23,10 @@ const Contact = dynamic(() => import("../Contact/Contact"), { ssr: false });
 
 export default function HomeClient({
   webinarPoster,
+  latestSocial,
 }: {
   webinarPoster?: { src: string; alt: string; details?: WebinarDetails };
+  latestSocial?: LatestSocial;
 }) {
   const aboutRef = useRef<HTMLElement>(null);
   const productsRef = useRef<HTMLElement>(null);
@@ -94,6 +97,7 @@ export default function HomeClient({
         <SocialMedia
           ref={socialMediaRef}
           onScrollDown={() => scrollTo(contactRef)}
+          latest={latestSocial}
         />
       </div>
 

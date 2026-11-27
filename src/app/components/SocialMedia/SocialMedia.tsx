@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import styles from "./SocialMedia.module.css";
 import ScrollButton from "../ScrollButton/ScrollButton";
+import type { LatestSocial } from "../../lib/socialPosts";
 
 interface SocialMediaPost {
   embedUrl: string;
@@ -60,19 +61,20 @@ interface SocialMediaProps {
   onScrollDown?: () => void;
   isSubpage?: boolean;
   isGoldenBg?: boolean;
+  latest?: LatestSocial;
 }
 
 const AUTOPLAY_MS = 6000;
 const DRAG_THRESHOLD = 6;
 
-const socialMediaPosts: SocialMediaPost[] = [
+const baseSocialMediaPosts: SocialMediaPost[] = [
   {
-    embedUrl: "/videos/instagram_reel.mp4",
-    postUrl: "https://www.instagram.com/reel/DYXTlf5NkLJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    title: "Instagram Reel",
-    comment: "Insights into our execution model and digital wealth custody architecture.",
+    embedUrl: "https://www.instagram.com/reel/DgK1annti7W/embed/",
+    postUrl: "https://www.instagram.com/reel/DgK1annti7W/",
+    title: "Latest on Instagram",
+    comment: "Gold is a seat belt. Not an engine.",
     name: "Official Instagram",
-    role: "@geldwealth",
+    role: "@geld.wealth",
     profileUrl: "https://www.instagram.com/geld.wealth/",
     platform: "instagram",
   },
@@ -87,13 +89,13 @@ const socialMediaPosts: SocialMediaPost[] = [
     platform: "youtube",
   },
   {
-    embedUrl: "/videos/linkedin_post.mp4",
-    postUrl: "https://www.linkedin.com/posts/geldwealth_starting-stock-market-investing-or-picking-activity-7477590114441969665-O-MV?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy",
-    title: "LinkedIn Post",
-    comment: "Long-term investment strategies and picking the right multi-cap portfolios.",
+    embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7502584039942549505",
+    postUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7502584039942549505/",
+    title: "Latest on LinkedIn",
+    comment: "FIIs sold. DIIs bought more than double. What it means for your SIP.",
     name: "Official LinkedIn",
-    role: "GeldWealth",
-    profileUrl: "https://in.linkedin.com/company/geldwealth",
+    role: "GELD Wealth",
+    profileUrl: "https://www.linkedin.com/company/geldwealth",
     platform: "linkedin",
   },
   {
@@ -181,7 +183,23 @@ export default function SocialMedia({
   onScrollDown,
   isSubpage,
   isGoldenBg,
+  latest,
 }: SocialMediaProps) {
+  const socialMediaPosts = React.useMemo<SocialMediaPost[]>(
+    () =>
+      baseSocialMediaPosts.map((p) => {
+        const l =
+          p.platform === "instagram"
+            ? latest?.instagram
+            : p.platform === "linkedin"
+              ? latest?.linkedin
+              : undefined;
+        return l
+          ? { ...p, embedUrl: l.embedUrl, postUrl: l.postUrl, comment: l.caption }
+          : p;
+      }),
+    [latest]
+  );
   const n = socialMediaPosts.length;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -422,6 +440,16 @@ export default function SocialMedia({
                           style={{ border: 0 }}
                           loading="lazy"
                           referrerPolicy="no-referrer-when-downgrade"
+                        />
+                      ) : /^https:\/\//.test(t.embedUrl) ? (
+                        <iframe
+                          title={t.title}
+                          src={isVisible ? t.embedUrl : undefined}
+                          className={styles.socialImage}
+                          style={{ border: 0, background: "#fff" }}
+                          loading="lazy"
+                          scrolling="no"
+                          allowFullScreen
                         />
                       ) : (
                         <video
