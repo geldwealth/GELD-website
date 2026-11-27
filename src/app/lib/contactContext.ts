@@ -92,7 +92,7 @@ export const CONTACT_INTENTS: Record<string, ContactIntentConfig> = {
     emailSubject: "AIF Inquiry from {name}",
     formBadge: "Alternative Investment Fund",
     formTitle: "Explore AIF opportunities",
-    formSubheading: "Alternative strategies for sophisticated investors.",
+    formSubheading: "Alternative strategies for experienced investors.",
     messagePlaceholder: "Tell us about your investment horizon and alternative asset interests...",
     thankYouTitle: "Thank you for your interest in AIF!",
     thankYouMessage:

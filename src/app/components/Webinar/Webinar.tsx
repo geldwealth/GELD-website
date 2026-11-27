@@ -186,7 +186,7 @@ export default function Webinar({
             <span>{details?.eyebrow || "Free Weekly Live Webinar"}</span>
           </div>
           <p className={styles.tagline}>
-            Know today. <span>Profit tomorrow.</span>
+            Know today. <span>Plan for tomorrow.</span>
           </p>
           <h2 className={styles.mainTitle}>
             {headline ? (

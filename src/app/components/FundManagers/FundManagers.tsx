@@ -128,15 +128,15 @@ export default function FundManagers({ ref, onScrollDown, isSubpage }: FundManag
 
           {/* Main Paragraph */}
           <p className={styles.aboutText}>
-            <span className={styles.serifItalic}>Great portfolios require visionary minds.</span>{" "}
+            <span className={styles.serifItalic}>Experience you can see.</span>{" "}
             <span className={styles.fadeText}>Guided by legends like Raamdeo Agrawal, Chandan Taparia, Sailesh Saraf, Madhu Runawat, Pankaj Murarka,
              Shailendra Kumar, Vikas Khemani and
               Sunil Singhania,</span>{" "}
             <span className={styles.highlightText}>
-              our fund management panel brings over 150 combined years of market-beating expertise.
+              our fund management panel brings over 150 combined years of experience in Indian markets.
             </span>{" "}
             <span className={styles.fadeText}>
-              Connecting your ambition directly with the architects of Indian wealth creation.
+              Their experience, working for your goals.
             </span>
           </p>
         </div>

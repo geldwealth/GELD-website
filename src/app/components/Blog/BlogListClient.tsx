@@ -49,8 +49,8 @@ export default function BlogListClient({ blogs }: BlogListClientProps) {
           Latest Articles
         </h2>
         <p className={styles.subtitle}>
-          Institutional-grade market insights, portfolio strategies, and wealth
-          management perspectives from the GELD research desk.
+          Plain-English market insights and money guides from the GELD team,
+          written for Indians who want a calmer plan for every market.
         </p>
       </header>
 

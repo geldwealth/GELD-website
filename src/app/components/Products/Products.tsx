@@ -123,9 +123,9 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
     }
   > = {
     [MINI_STOCK_PORTFOLIOS_NAME]: {
-      title: "High Returns, Low Stress",
+      title: "Expert-Picked Stocks, Less Stress",
       subtitle:
-        "Mini stock portfolios: India's Top Fund Managers, Known For Buffett-Like Returns",
+        "Mini stock portfolios: Managed by Some of India's Top Fund Managers",
       paragraph:
         "Starting at just ₹2.5 lakhs, your money is invested in a focused portfolio of 20 to 30 best stocks, giving you expert management without the hassle of doing it yourself.",
       badge: MINI_STOCK_PORTFOLIOS_NAME,
@@ -135,7 +135,7 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
     },
     PMS: {
       title: "Why Settle For Average When You Can Have The Best?",
-      subtitle: "PMS: Concentrated conviction, professionally managed for superior growth",
+      subtitle: "PMS: Concentrated conviction, professionally managed",
       paragraph:
         "While mutual funds spread across 100+ stocks, PMS invests in just 20 to 25 handpicked companies, focused and not over-diversified, so your portfolio fully benefits from each high-conviction pick.",
       badge: "Portfolio Management Services",
@@ -144,17 +144,17 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
       anchorId: "pms-section"
     },
     AIF: {
-      title: "Alternative Alpha, Maximum Leverage",
-      subtitle: "AIF: Alternative Investment Funds for Sophisticated Yields",
-      paragraph:"Who makes the biggest returns after a business owner? Private equity investors who invest before the IPO. Our AIF partners invest in high quality companies before they go public, giving you access to the same growth opportunity. No IPO allotment uncertainty. Just long term value creation until the IPO exit. This opportunity is designed for sophisticated investors. Minimum investment: ₹1 crore as per SEBI guidelines. AIF investments are subject to market and liquidity risks. Please read all offer documents carefully before investing.",
+      title: "Invest Before the IPO",
+      subtitle: "AIF: Alternative Investment Funds for Experienced Investors",
+      paragraph:"Many of India's biggest wealth stories began before the IPO, with private equity investors. Our AIF partners invest in high quality companies before they go public, giving you access to the same growth opportunity. No IPO allotment uncertainty. Just long term value creation until the IPO exit. This opportunity is designed for sophisticated investors. Minimum investment: ₹1 crore as per SEBI guidelines. AIF investments are subject to market and liquidity risks. Please read all offer documents carefully before investing.",
       // paragraph: "Access high-yield alternative opportunities including pre-IPO equity, structured debt, and commercial real estate starting at ₹1 Crore. Tailored for ultra-high-net-worth portfolios seeking non-correlated alpha.",
       badge: "Alternative Investment Fund",
-      primaryCta: "Explore AIF Vaults",
+      primaryCta: "Explore AIFs",
       secondaryCta: "Consult AIF Advisor",
       anchorId: "aif-section"
     },
     "Mutual Funds": {
-      title: "Diversification Simplified, Wealth Amplified",
+      title: "Diversification, Simplified",
       subtitle: "Mutual Funds: Curated Schemes, Compounded Growth",
       paragraph:
         "Most people own too many schemes and think too little about which ones. At Geld, we do it differently. Three to four carefully selected schemes. Right allocation for your age. Fund managers we actually believe in. And a fund size filter that most advisers never think about. Because a well-chosen SIP in the right three funds beats a cluttered portfolio of fifteen every single time. Minimum investment: Rs 500 per month.",
@@ -172,13 +172,13 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
         <div className={`${styles.statementWrapper} ${isSubpage ? styles.statementWrapperSubpage : ""}`}>
           <div className={styles.aboutContainer}>
             <div className={styles.aboutBadge}>
-              <span className={styles.aboutBadgeText}>Wealth Vaults</span>
+              <span className={styles.aboutBadgeText}>What We Offer</span>
             </div>
             <p className={styles.aboutText}>
               <span className={styles.serifItalic}>Steady advice. Every market.</span>{" "}
-              <span className={styles.fadeText}>Access high-yield multi-asset vaults, automated rebalancing algorithms,</span>{" "}
-              <span className={styles.highlightText}>and tailored estate planning protocols designed to grow your assets across all classes.</span>{" "}
-              <span className={styles.fadeText}>Bespoke financial engineering that turns ambition into legacy.</span>
+              <span className={styles.fadeText}>Mutual funds, professionally managed stock portfolios and alternative funds,</span>{" "}
+              <span className={styles.highlightText}>chosen for your goals, not for a sales target.</span>{" "}
+              <span className={styles.fadeText}>One clear plan for your whole portfolio, from a Lower Parel team you can actually meet.</span>
             </p>
           </div>
         </div>

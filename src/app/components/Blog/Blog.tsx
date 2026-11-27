@@ -51,10 +51,10 @@ export default function Blog({ ref, onScrollDown, isSubpage }: BlogProps) {
 
           {/* Main Paragraph */}
           <p className={styles.aboutText}>
-            <span className={styles.serifItalic}>Information is noise, signal is wealth.</span>{" "}
-            <span className={styles.fadeText}>At Geld, our research desk decodes complex macro trends,</span>{" "}
-            <span className={styles.highlightText}>publishing institutional-grade market briefs, derivative analysis, and tactical asset allocations.</span>{" "}
-            <span className={styles.fadeText}>Stay ahead of the curve with insights engineered for the ambitious investor.</span>
+            <span className={styles.serifItalic}>Less noise, more clarity.</span>{" "}
+            <span className={styles.fadeText}>Every week we look at what moved the markets and what Indians are searching about money,</span>{" "}
+            <span className={styles.highlightText}>and explain what it means for your money in plain language.</span>{" "}
+            <span className={styles.fadeText}>Read, check your plan, and invest with a calmer mind.</span>
           </p>
         </div>
       </div>
