@@ -12,6 +12,7 @@ import type { LatestSocial } from "../../lib/socialPosts";
 
 interface SocialMediaPost {
   embedUrl: string;
+  imageUrl?: string;
   postUrl: string;
   title: string;
   comment: string;
@@ -70,6 +71,7 @@ const DRAG_THRESHOLD = 6;
 const baseSocialMediaPosts: SocialMediaPost[] = [
   {
     embedUrl: "https://www.instagram.com/reel/DgK1annti7W/embed/",
+    imageUrl: "https://cdn.sanity.io/images/rg4sn4ug/production/e5274ab75ae735987c5d572ba66b3d676bb14ab6-810x1438.jpg",
     postUrl: "https://www.instagram.com/reel/DgK1annti7W/",
     title: "Latest on Instagram",
     comment: "Gold is a seat belt. Not an engine.",
@@ -79,23 +81,14 @@ const baseSocialMediaPosts: SocialMediaPost[] = [
     platform: "instagram",
   },
   {
-    embedUrl: "/videos/youtube_short.mp4",
-    postUrl: "https://youtube.com/shorts/_7fooMC6aks?si=_XQsRYMbBA4_-FB2",
-    title: "YouTube Short",
-    comment: "Starting Stock Market Investing or Picking?",
-    name: "Official YouTube",
-    role: "@GeldWealthmanagement",
-    profileUrl: "https://www.youtube.com/@GeldWealthmanagement",
-    platform: "youtube",
-  },
-  {
-    embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7502584039942549505",
-    postUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7502584039942549505/",
+    embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7528299837914640384",
+    imageUrl: "https://cdn.sanity.io/images/rg4sn4ug/production/0a1f90ec67e0e44eb71fcc2b5126105b052d14b2-1080x1620.jpg",
+    postUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7528299837914640384/",
     title: "Latest on LinkedIn",
-    comment: "FIIs sold. DIIs bought more than double. What it means for your SIP.",
-    name: "Official LinkedIn",
-    role: "GELD Wealth",
-    profileUrl: "https://www.linkedin.com/company/geldwealth",
+    comment: "₹50 lakh salary. 15 years of investing. Still not sure if it is enough to retire.",
+    name: "Aastha Jha on LinkedIn",
+    role: "Aastha Jha",
+    profileUrl: "https://www.linkedin.com/in/aastha-jha-758868127/",
     platform: "linkedin",
   },
   {
@@ -195,7 +188,7 @@ export default function SocialMedia({
               ? latest?.linkedin
               : undefined;
         return l
-          ? { ...p, embedUrl: l.embedUrl, postUrl: l.postUrl, comment: l.caption }
+          ? { ...p, embedUrl: l.embedUrl, postUrl: l.postUrl, comment: l.caption, imageUrl: l.imageUrl || p.imageUrl }
           : p;
       }),
     [latest]
@@ -441,6 +434,22 @@ export default function SocialMedia({
                           loading="lazy"
                           referrerPolicy="no-referrer-when-downgrade"
                         />
+                      ) : t.imageUrl ? (
+                        <>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={t.imageUrl}
+                            alt={t.comment}
+                            className={styles.socialImage}
+                            style={{ objectPosition: "top center" }}
+                            loading="lazy"
+                          />
+                          {t.platform === "instagram" && (
+                            <span className={styles.playBadge} aria-hidden="true">
+                              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5" /></svg>
+                            </span>
+                          )}
+                        </>
                       ) : /^https:\/\//.test(t.embedUrl) ? (
                         <iframe
                           title={t.title}

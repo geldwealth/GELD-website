@@ -67,4 +67,4 @@ export const WEBINAR_DETAILS_QUERY = `
   "points": topics[].points[]
 }
 `;
-export const SOCIAL_POSTS_QUERY = `*[_id == "socialPosts"][0]{instagramUrl,instagramCaption,linkedinUrl,linkedinCaption}`;
+export const SOCIAL_POSTS_QUERY = `*[_id == "socialPosts"][0]{instagramUrl,instagramCaption,"instagramImage": instagramImage.asset->url,linkedinUrl,linkedinCaption,"linkedinImage": linkedinImage.asset->url}`;

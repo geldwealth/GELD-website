@@ -1122,3 +1122,21 @@
   text-decoration: underline;
   color: #ffffff;
 }
+.playBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+  color: #15130f;
+  background: rgba(201, 168, 76, 0.92);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  z-index: 4;
+  pointer-events: none;
+}

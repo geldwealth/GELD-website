@@ -5,6 +5,7 @@ export type LatestSocialPost = {
   postUrl: string;
   embedUrl: string;
   caption: string;
+  imageUrl?: string;
 };
 
 export type LatestSocial = {
@@ -16,9 +17,13 @@ export type LatestSocial = {
 const FALLBACK = {
   instagramUrl: "https://www.instagram.com/reel/DgK1annti7W/",
   instagramCaption: "Gold is a seat belt. Not an engine.",
+  instagramImage:
+    "https://cdn.sanity.io/images/rg4sn4ug/production/e5274ab75ae735987c5d572ba66b3d676bb14ab6-810x1438.jpg",
   linkedinUrl:
-    "https://www.linkedin.com/feed/update/urn:li:activity:7502584039942549505/",
-  linkedinCaption: "FIIs sold. DIIs bought more than double. What it means for your SIP.",
+    "https://www.linkedin.com/feed/update/urn:li:activity:7528299837914640384/",
+  linkedinCaption: "₹50 lakh salary. 15 years of investing. Still not sure if it is enough to retire.",
+  linkedinImage:
+    "https://cdn.sanity.io/images/rg4sn4ug/production/0a1f90ec67e0e44eb71fcc2b5126105b052d14b2-1080x1620.jpg",
 };
 
 export function instagramEmbed(url?: string): LatestSocialPost["embedUrl"] | null {
@@ -36,16 +41,21 @@ export function linkedinEmbed(url?: string): string | null {
 type Doc = {
   instagramUrl?: string;
   instagramCaption?: string;
+  instagramImage?: string;
   linkedinUrl?: string;
   linkedinCaption?: string;
+  linkedinImage?: string;
 } | null;
 
-function build(url: string | undefined, caption: string | undefined, fbUrl: string, fbCaption: string, embed: (u?: string) => string | null): LatestSocialPost {
+const okImage = (u?: string) =>
+  typeof u === "string" && /^https:\/\/cdn\.sanity\.io\//.test(u) ? u : undefined;
+
+function build(url: string | undefined, caption: string | undefined, image: string | undefined, fbUrl: string, fbCaption: string, fbImage: string, embed: (u?: string) => string | null): LatestSocialPost {
   const e = embed(url);
   if (url && e && /^https:\/\//.test(url)) {
-    return { postUrl: url, embedUrl: e, caption: caption?.trim() || fbCaption };
+    return { postUrl: url, embedUrl: e, caption: caption?.trim() || fbCaption, imageUrl: okImage(image) };
   }
-  return { postUrl: fbUrl, embedUrl: embed(fbUrl)!, caption: fbCaption };
+  return { postUrl: fbUrl, embedUrl: embed(fbUrl)!, caption: fbCaption, imageUrl: fbImage };
 }
 
 export async function getLatestSocial(): Promise<LatestSocial> {
@@ -56,7 +66,7 @@ export async function getLatestSocial(): Promise<LatestSocial> {
     d = null;
   }
   return {
-    instagram: build(d?.instagramUrl, d?.instagramCaption, FALLBACK.instagramUrl, FALLBACK.instagramCaption, instagramEmbed),
-    linkedin: build(d?.linkedinUrl, d?.linkedinCaption, FALLBACK.linkedinUrl, FALLBACK.linkedinCaption, linkedinEmbed),
+    instagram: build(d?.instagramUrl, d?.instagramCaption, d?.instagramImage, FALLBACK.instagramUrl, FALLBACK.instagramCaption, FALLBACK.instagramImage, instagramEmbed),
+    linkedin: build(d?.linkedinUrl, d?.linkedinCaption, d?.linkedinImage, FALLBACK.linkedinUrl, FALLBACK.linkedinCaption, FALLBACK.linkedinImage, linkedinEmbed),
   };
 }
