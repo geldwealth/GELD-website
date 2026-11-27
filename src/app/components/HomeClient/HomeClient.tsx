@@ -1,5 +1,7 @@
 "use client";
 
+import type { WebinarDetails } from "../../lib/webinarPoster";
+
 import React, { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styles from "../../page.module.css";
@@ -21,7 +23,7 @@ const Contact = dynamic(() => import("../Contact/Contact"), { ssr: false });
 export default function HomeClient({
   webinarPoster,
 }: {
-  webinarPoster?: { src: string; alt: string };
+  webinarPoster?: { src: string; alt: string; details?: WebinarDetails };
 }) {
   const aboutRef = useRef<HTMLElement>(null);
   const productsRef = useRef<HTMLElement>(null);
@@ -84,6 +86,7 @@ export default function HomeClient({
           onScrollDown={() => scrollTo(socialMediaRef)}
           posterSrc={webinarPoster?.src}
           posterAlt={webinarPoster?.alt}
+          details={webinarPoster?.details}
         />
       </div>
 

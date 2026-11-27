@@ -16,6 +16,7 @@ export default async function WebinarPage() {
         isSubpage
         posterSrc={webinarPoster.src}
         posterAlt={webinarPoster.alt}
+        details={webinarPoster.details}
       />
     </div>
   );

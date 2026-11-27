@@ -51,3 +51,19 @@ export const WEBINAR_QUERY = `
   }
 }
 `;
+
+// Weekly session details. The landing page document (lp.geldwealth.com) is
+// updated every week from the Zoom session, so the main site reads the same
+// title, topics and registration link from it.
+export const WEBINAR_DETAILS_QUERY = `
+*[_id == "landingWebinar"][0]{
+  heroEyebrow,
+  heroHeadline,
+  heroHighlight,
+  heroSubtitle,
+  eventMeta,
+  eventDateTime,
+  registerUrl,
+  "points": topics[].points[]
+}
+`;

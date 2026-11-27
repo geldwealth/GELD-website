@@ -6,7 +6,7 @@ import styles from "./SocialRail.module.css";
 const socialLinks = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/geldwealth/",
+    href: "https://www.instagram.com/geld.wealth/",
     icon: (
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" strokeWidth="2" />
@@ -20,23 +20,24 @@ const socialLinks = [
     ),
   },
   {
-    label: "Facebook",
-    href: "https://www.facebook.com/people/Anil-Jha/100055548436300/",
+    label: "YouTube",
+    href: "https://www.youtube.com/@GeldWealthmanagement",
     icon: (
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
-          d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+          d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
+        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
       </svg>
     ),
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/anil-jha-08b5b323",
+    href: "https://www.linkedin.com/company/geldwealth",
     icon: (
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path

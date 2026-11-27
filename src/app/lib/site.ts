@@ -5,4 +5,4 @@ export const SITE_URL =
 export const SITE_NAME = "GELD Wealth";
 
 export const SITE_DESCRIPTION =
-  "Empowering investors with expert portfolio management, alternative funds, and tailored wealth strategies.";
+  "Free weekly webinars, mutual funds and professionally managed stock portfolios. A Lower Parel, Mumbai team helping you invest calmly in every market.";

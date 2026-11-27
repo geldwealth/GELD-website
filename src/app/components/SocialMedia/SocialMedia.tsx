@@ -73,7 +73,7 @@ const socialMediaPosts: SocialMediaPost[] = [
     comment: "Insights into our execution model and digital wealth custody architecture.",
     name: "Official Instagram",
     role: "@geldwealth",
-    profileUrl: "https://www.instagram.com/geldwealth/",
+    profileUrl: "https://www.instagram.com/geld.wealth/",
     platform: "instagram",
   },
   {

@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./Webinar.module.css";
 import ScrollButton from "../ScrollButton/ScrollButton";
 import { buildMailtoHref, openSupportEmail } from "../../lib/openSupportEmail";
+import type { WebinarDetails } from "../../lib/webinarPoster";
 
 const WEBINAR_MAIL = {
   subject: "Webinar Registration Help",
@@ -17,10 +18,11 @@ interface WebinarProps {
   isSubpage?: boolean;
   posterSrc?: string;
   posterAlt?: string;
+  details?: WebinarDetails;
 }
 
-const REGISTER_URL =
-  "https://us06web.zoom.us/meeting/register/c_aXknaCTjKhfQDFje_WhQ";
+// Used only if Sanity is unavailable. The weekly link comes from Sanity.
+const FALLBACK_REGISTER_URL = "https://lp.geldwealth.com/";
 
 const topics = [
   {
@@ -107,7 +109,7 @@ const topics = [
   },
   {
     title: "Live Q&A",
-    desc: "Your questions answered directly by Chandan.",
+    desc: "Bring your questions and get them answered live.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
@@ -126,8 +128,20 @@ export default function Webinar({
   onScrollDown,
   isSubpage,
   posterSrc = "/webinar_poster.jpg",
-  posterAlt = "GELD webinar poster: Ask The Expert, Trade Smarter with Chandan Taparia",
+  posterAlt = "GELD Wealth free weekly webinar poster",
+  details,
 }: WebinarProps) {
+  const registerUrl = details?.registerUrl || FALLBACK_REGISTER_URL;
+  const headline = details?.headline;
+  const highlight = details?.highlight;
+  const sessionTopics =
+    details?.points && details.points.length > 0
+      ? details.points.map((point, idx) => ({
+          title: point,
+          desc: "",
+          icon: topics[idx % topics.length].icon,
+        }))
+      : topics;
   const [isVisible, setIsVisible] = useState(false);
   const fallbackRef = useRef<HTMLElement>(null);
   const activeRef = ref || fallbackRef;
@@ -169,18 +183,31 @@ export default function Webinar({
         <header className={styles.headerBlock}>
           <div className={styles.badge}>
             {/* <span className={styles.liveDot} aria-hidden="true" /> */}
-            <span>Weekly Live Webinar</span>
+            <span>{details?.eyebrow || "Free Weekly Live Webinar"}</span>
           </div>
           <p className={styles.tagline}>
             Know today. <span>Profit tomorrow.</span>
           </p>
           <h2 className={styles.mainTitle}>
-            Ask The <span className={styles.serifText}>Expert</span>,{" "}
-            <span className={styles.goldText}>Trade Smarter</span>
+            {headline ? (
+              <>
+                {headline}
+                {highlight ? (
+                  <>
+                    {" "}
+                    <span className={styles.goldText}>{highlight}</span>
+                  </>
+                ) : null}
+              </>
+            ) : (
+              <>
+                Steady Advice. <span className={styles.goldText}>Every Market.</span>
+              </>
+            )}
           </h2>
           <p className={styles.subSubtitle}>
-            Join a live session with one of India's most watched market voices, and get your
-            trading questions answered directly.
+            {details?.subtitle ||
+              "Join a free live session every Saturday and get your money questions answered directly."}
           </p>
         </header>
 
@@ -211,10 +238,10 @@ export default function Webinar({
             <div className={styles.topicsPanel}>
               <div className={styles.panelHeader}>
                 <h3 className={styles.panelTitle}>What we'll cover</h3>
-                <p className={styles.panelHint}>60-minute wealth masterclass</p>
+                <p className={styles.panelHint}>{details?.meta || "Live on Zoom"}</p>
               </div>
               <div className={styles.topicsGrid}>
-                {topics.map((topic, idx) => (
+                {sessionTopics.map((topic, idx) => (
                   <div
                     key={topic.title}
                     className={styles.topicCard}
@@ -223,7 +250,7 @@ export default function Webinar({
                     <div className={styles.topicIcon}>{topic.icon}</div>
                     <div>
                       <h4 className={styles.topicTitle}>{topic.title}</h4>
-                      <p className={styles.topicDesc}>{topic.desc}</p>
+                      {topic.desc ? <p className={styles.topicDesc}>{topic.desc}</p> : null}
                     </div>
                   </div>
                 ))}
@@ -231,14 +258,10 @@ export default function Webinar({
             </div>
 
             <div className={styles.ctaPanel}>
-              <p className={styles.ctaCopy}>
-                Whether you trade on your own or are just starting out,{" "}
-                <strong>this is the session you don't want to miss.</strong>
-              </p>
               <button
                 type="button"
                 className={styles.reserveBtn}
-                onClick={() => window.open(REGISTER_URL, "_blank", "noopener,noreferrer")}
+                onClick={() => window.open(registerUrl, "_blank", "noopener,noreferrer")}
               >
                 Reserve your seat
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -271,8 +294,7 @@ export default function Webinar({
         <p className={styles.disclaimerText}>
           This webinar is for educational purposes only. Views expressed are of the speaker and do
           not constitute investment advice. Securities market investments are subject to market
-          risks. Please read all related documents carefully before investing. GELD is a SEBI
-          Registered Investment Advisor.
+          risks. Please read all related documents carefully before investing.
         </p>
       </div>
 

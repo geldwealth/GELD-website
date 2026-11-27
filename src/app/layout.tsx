@@ -17,7 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME}: Precision instruments for capital expansion`,
+    default: `${SITE_NAME}: Steady Advice. Every Market. | Mumbai`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   keywords: [
     "GELD Wealth",
-    "portfolio management",
-    "PMS",
-    "AIF",
+    "Geld Wealth Mumbai",
     "mutual funds",
-    "wealth management",
-    "India investing",
+    "stock portfolio",
+    "free investing webinar",
+    "Lower Parel",
+    "investing in India",
   ],
   alternates: {
     canonical: "/",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME}: Precision instruments for capital expansion`,
+    title: `${SITE_NAME}: Steady Advice. Every Market. | Mumbai`,
     description: SITE_DESCRIPTION,
     images: [
       {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME}: Precision instruments for capital expansion`,
+    title: `${SITE_NAME}: Steady Advice. Every Market. | Mumbai`,
     description: SITE_DESCRIPTION,
     images: ["/new_geld_g_logo.png"],
   },

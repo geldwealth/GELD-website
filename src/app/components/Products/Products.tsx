@@ -175,7 +175,7 @@ export default function Products({ mode = "all", defaultProduct, ref, onScrollDo
               <span className={styles.aboutBadgeText}>Wealth Vaults</span>
             </div>
             <p className={styles.aboutText}>
-              <span className={styles.serifItalic}>Precision instruments for capital expansion.</span>{" "}
+              <span className={styles.serifItalic}>Steady advice. Every market.</span>{" "}
               <span className={styles.fadeText}>Access high-yield multi-asset vaults, automated rebalancing algorithms,</span>{" "}
               <span className={styles.highlightText}>and tailored estate planning protocols designed to grow your assets across all classes.</span>{" "}
               <span className={styles.fadeText}>Bespoke financial engineering that turns ambition into legacy.</span>
